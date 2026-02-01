@@ -3,11 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>kataX | Digital Excellence Studio</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
   <style>
+ /* Botón WhatsApp Premium kataX */
+.whatsapp-float {
+  position: fixed;
+  width: 65px;  /* Más grande */
+  height: 65px;
+  bottom: 30px;
+  right: 30px;
+  background: var(--gradient); /* Usa tu lila y rosa */
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 2000;
+  box-shadow: 0 10px 30px rgba(155, 92, 255, 0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* El texto que aparece al lado */
+.whatsapp-float::before {
+  content: '¡Hablemos!';
+  position: absolute;
+  right: 80px;
+  background: rgba(8, 8, 12, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 8px 15px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  border: 1px solid var(--border);
+  opacity: 0;
+  transform: translateX(20px);
+  transition: 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1) rotate(8deg);
+  box-shadow: 0 15px 45px rgba(255, 79, 163, 0.6);
+}
+
+.whatsapp-float:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.whatsapp-float svg {
+  width: 35px;
+  height: 35px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+/* Animación de "pulso" sutil para que llame la atención */
+@keyframes pulse-whatsapp {
+  0% { box-shadow: 0 0 0 0 rgba(155, 92, 255, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(155, 92, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(155, 92, 255, 0); }
+}
+
+.whatsapp-float {
+  animation: pulse-whatsapp 2s infinite;
+}
     :root {
       --lila: #9b5cff;
       --rosa: #ff4fa3;
@@ -23,7 +88,7 @@
     body {
       background-color: var(--negro-ebano);
       color: #ffffff;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       overflow-x: hidden;
     }
 
@@ -37,28 +102,47 @@
         radial-gradient(circle at 80% 70%, rgba(255, 79, 163, 0.07) 0%, transparent 40%);
     }
 
-    /* HEADER */
-    header {
+   header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 25px 8%;
+      padding: 5px 8%; /* Padding reducido para un header más fino */
       backdrop-filter: blur(20px);
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 1000;
       border-bottom: 1px solid var(--border);
+      height: 85px; /* Altura fija para control total */
     }
 
     .logo {
-      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 4px; /* Reducido de 12px a 4px para pegarlos */
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .logo img {
+      height: 40px; /* Ajustado para que quepa bien en el header de 85px */
+      width: auto;
+      margin-right: 0; /* Aseguramos que no haya margen extra */
+      object-fit: contain;
+      filter: drop-shadow(0 0 12px rgba(155, 92, 255, 0.5)); 
+    }
+
+    .logo span {
+      font-size: 2.2rem;
       font-weight: 800;
-      letter-spacing: -2px;
+      letter-spacing: -1.5px;
       background: var(--gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      font-family: 'Outfit', sans-serif;
+      line-height: 1;
+      margin-top: 5px;
+      margin-left: -5px; /* Margen negativo para compensar el aire visual del icono */
     }
 
     nav ul { display: flex; list-style: none; gap: 40px; }
@@ -69,7 +153,13 @@
     nav a:hover { opacity: 1; color: var(--rosa); text-shadow: 0 0 10px rgba(255,79,163,0.3); }
 
     /* SECCIONES ANIMADAS */
-    section { padding: 120px 8%; opacity: 0; transform: translateY(40px); transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+    section { 
+      padding: 120px 8%; 
+      opacity: 0; 
+      transform: translateY(40px); 
+      transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
+      scroll-margin-top: 100px; /* Evita que el header tape el contenido */
+    }
     section.visible { opacity: 1; transform: translateY(0); }
 
     /* HERO SECTION */
@@ -100,6 +190,12 @@
       font-weight: 700; 
       line-height: 0.95; 
       margin-bottom: 30px; 
+    }
+
+    .hero h1 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero p { 
@@ -148,6 +244,7 @@
 
     /* TRABAJOS */
     .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 50px; }
+    
     .work-item {
       position: relative;
       height: 450px;
@@ -155,10 +252,16 @@
       overflow: hidden;
       background: var(--negro-card);
       border: 1px solid var(--border);
-      transition: 0.5s;
+      transition: all 0.5s ease;
+      /* Efecto de luz por defecto para que funcione el JS */
+      background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(155, 92, 255, 0.15), transparent 40%);
     }
 
-    .work-item:hover { border-color: var(--lila); transform: scale(1.02); }
+    .work-item:hover {
+      border-color: var(--rosa);
+      box-shadow: 0 0 30px rgba(155, 92, 255, 0.2);
+    }
+
     .work-content {
       position: absolute;
       bottom: 0; left: 0; width: 100%;
@@ -200,12 +303,56 @@
     /* CONTACTO */
     .contact-area { text-align: center; padding: 150px 8%; }
     .contact-area h2 { font-size: 4rem; margin-bottom: 20px; font-family: 'Outfit'; }
-    .contact-link { 
-      font-size: clamp(1.5rem, 5vw, 3.5rem); 
-      color: #fff; text-decoration: none; 
-      font-weight: 800; transition: 0.4s;
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 900px;
+      margin: 50px auto 0;
     }
-    .contact-link:hover { color: var(--lila); letter-spacing: 2px; }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      padding: 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .contact-card.ws:hover { border-color: #25D366; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.1); }
+    .contact-card.mail:hover { border-color: var(--lila); box-shadow: 0 10px 30px rgba(155, 92, 255, 0.1); }
+
+    .icon-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    .ws .icon-circle { background: rgba(37, 211, 102, 0.1); color: #25D366; }
+    .mail .icon-circle { background: rgba(155, 92, 255, 0.1); color: var(--lila); }
+
+    .contact-card h3 { font-family: 'Outfit'; font-size: 1.5rem; margin-bottom: 10px; }
+    .contact-card p { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 20px; }
+    .contact-card .val { font-weight: 700; font-size: 1.1rem; color: white; transition: 0.3s; }
+    .contact-card:hover .val { color: var(--rosa); }
 
     footer {
       padding: 60px 8%;
@@ -225,16 +372,23 @@
   </style>
 </head>
 <body>
-
+<a href="https://wa.me/TU_NUMERO_AQUI" class="whatsapp-float" target="_blank">
+  <svg width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+  </svg>
+</a>
   <div class="bg-main"></div>
 
-  <header>
-    <div class="logo">kataX</div>
+ <header>
+    <a href="#hero" class="logo">
+      <img src="logokataX.png" alt="Logo">
+      <span>kataX</span>
+    </a>
     <nav>
       <ul>
-        <li><a href="#about">Nosotros</a></li>
-        <li><a href="#work">Trabajos</a></li>
-        <li><a href="#prices">Precios</a></li>
+        <li><a href="#about">Filosofía</a></li>
+        <li><a href="#work">Showcase</a></li>
+        <li><a href="#prices">Inversión</a></li>
         <li><a href="#contact">Contacto</a></li>
       </ul>
     </nav>
@@ -242,7 +396,7 @@
 
   <main>
     <section id="hero" class="hero visible">
-      <div class="hero-badge">FRONTEND WEB'S & MORE</div>
+      <div class="hero-badge">FRONTEND ARTISTS & AI SOLUTIONS</div>
       <h1>Creamos el <br><span>Futuro Digital.</span></h1>
       <p>No somos una agencia convencional. Somos un estudio boutique que fusiona el diseño de autor con la potencia de la Inteligencia Artificial para marcas que exigen excelencia.</p>
       <a href="#contact" class="btn btn-glow">Reservar Consultoría</a>
@@ -310,30 +464,98 @@
     </section>
 
     <section id="contact" class="contact-area">
-      <h2>¿Hablamos de tu <span>Idea?</span></h2>
-      <p style="color: var(--text-gray); margin-bottom: 50px; font-size: 1.3rem;">Estamos listos para dar vida a tu próximo gran proyecto.</p>
-      <a href="mailto:hola@katax.com" class="contact-link">hola@katax.com</a>
-      <div style="margin-top: 40px; font-weight: 700; color: var(--text-gray);">MEX · +52 999 528 9854</div>
+      <h2>¿Hablamos?</h2>
+      <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto;">Conecta con nosotros. Estamos listos para rescatar tu idea y darle la forma digital que merece.</p>
+      
+      <div class="contact-grid">
+       <a href="https://wa.me/34NUMERO" target="_blank" class="contact-card ws">
+          <div class="icon-circle">
+            <svg width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+            </svg>
+          </div>
+          <h3>WhatsApp</h3>
+          <p>Chatea con nosotros</p>
+          <span class="val">+34 NUMERO</span>
+        </a>
+
+        <a href="mailto:general@katax.es" class="contact-card mail">
+          <div class="icon-circle">
+            <svg width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+            </svg>
+          </div>
+          <h3>Email</h3>
+          <p>Envíanos tu idea</p>
+          <span class="val">general@katax.es</span>
+        </a>
+      </div>
     </section>
   </main>
 
   <footer>
     <div>© 2026 kataX Studio · Crafted with Precision.</div>
-    <div class="logo" style="font-size: 1rem;">kataX</div>
+    <div class="logo">
+      <img src="logokataX.png" style="height: 30px; filter: none;">
+      <span style="font-size: 1.4rem;">kataX</span>
+    </div>
   </footer>
 
-  <script>
-    // Script mejorado para revelación de secciones
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.15 });
+<script>
+  // 1. Animación de aparición al hacer scroll (la que ya tenías)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
 
-    document.querySelectorAll('section').forEach(section => observer.observe(section));
-  </script>
+  document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+  // 2. SOLUCIÓN AL CLICK: Forzar el scroll manual
+  document.querySelectorAll('nav a, .btn').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      
+      // Solo si el enlace empieza por #
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          // Primero la hacemos visible por si el Observer falla
+          targetElement.classList.add('visible'); 
+          
+          // Calculamos la posición restando el margen del header
+          const offsetTop = targetElement.offsetTop - 80;
+
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
+
+  // 3. Efecto de luz en las tarjetas
+  const workItems = document.querySelectorAll('.work-item');
+  workItems.forEach(item => {
+    item.addEventListener('mousemove', (e) => {
+      const rect = item.getBoundingClientRect();
+      item.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+      item.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+    });
+  });
+</script>
 
 </body>
 </html>
+
+
+
+
+
+
 
 

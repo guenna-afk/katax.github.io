@@ -1,14 +1,84 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <title>kataX Studio | Diseño Web & Soluciones con IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="logokataX.png" type="image/png">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tu-dominio.es/">
+<meta property="og:title" content="kataX Studio | El Futuro Digital">
+<meta property="og:description" content="Transformamos ideas en interfaces premium. Web profesional por 50€/mes.">
+<meta property="og:image" content="https://tu-dominio.es/preview-image.jpg"> <meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="kataX Studio">
+<meta property="twitter:description" content="Diseño de autor fusionado con Inteligencia Artificial.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
   <style>
-  /* Animación al hacer clic en el logo */
-    /* Estilos del logo con efectos Guapos */
+/* Gradiente animado para el H1 */
+.gradient-animate {
+  background: linear-gradient(120deg, var(--lila), var(--rosa), var(--lila));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+/* Estilos para el texto más ligero */
+.hero-text {
+  font-size: 1.1rem !important;
+  max-width: 600px !important;
+}
+
+/* Efecto Typing básico */
+.typewriter, .typewriter-delay {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--rosa);
+  width: 0;
+}
+
+.typewriter {
+  animation: typing 1.6s steps(40, end) forwards;
+}
+
+.typewriter-delay {
+  animation: typing 1.6s steps(40, end) 1.6s forwards;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100%; border-color: transparent; }
+}
+
+@keyframes fadeInSimple {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* AJUSTE PARA MÓVILES: Sin esperas, texto fluido */
+@media (max-width: 768px) {
+  .typewriter, .typewriter-delay {
+    white-space: normal; /* Permite que el texto salte de línea */
+    width: 100% !important;
+    border: none;
+    animation: fadeInSimple 0.8s ease-out forwards !important;
+  }
+  
+  .typewriter-delay {
+    animation-delay: 0.3s !important; /* Retraso mínimo en móvil */
+  }
+}
     .logo {
       display: flex;
       align-items: center;
@@ -123,14 +193,14 @@
   animation: pulse-whatsapp 2s infinite;
 }
     :root {
-      --lila: #9b5cff;
-      --rosa: #ff4fa3;
-      --negro-ebano: #030305;
-      --negro-card: #08080c;
-      --border: rgba(255, 255, 255, 0.06);
-      --text-gray: #a1a1aa;
-      --gradient: linear-gradient(135deg, var(--lila) 0%, var(--rosa) 100%);
-    }
+  --lila: #9b5cff;
+  --rosa: #ff4fa3;
+  --negro-ebano: #030305;
+  --negro-card: #08080c;
+  --border: rgba(255, 255, 255, 0.08); /* Un pelín más visible */
+  --text-gray: #d1d1d6; /* Gris mucho más legible */
+  --gradient: linear-gradient(135deg, var(--lila) 0%, var(--rosa) 100%);
+}
 
     * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
@@ -140,7 +210,17 @@
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
     }
+p {
+  color: var(--text-gray);
+  line-height: 1.7; 
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
 
+.about-text p {
+  font-size: 1.15rem;
+  margin-bottom: 25px;
+}
     /* BACKGROUND EFECTOS */
     .bg-main {
       position: fixed;
@@ -195,12 +275,47 @@
     }
 
     nav ul { display: flex; list-style: none; gap: 40px; }
-    nav a { 
-      text-decoration: none; color: #fff; font-size: 0.9rem; 
-      font-weight: 500; opacity: 0.5; transition: 0.4s;
-    }
-    nav a:hover { opacity: 1; color: var(--rosa); text-shadow: 0 0 10px rgba(255,79,163,0.3); }
+   nav a {  
+  text-decoration: none; 
+  color: #fff; 
+  font-size: 0.85rem; 
+  font-weight: 500; 
+  opacity: 0.6; 
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  /* Eliminamos el borde sólido anterior para que la línea brille más */
+}
 
+nav a:hover { 
+  opacity: 1; 
+  color: #fff;
+  transform: translateY(-3px); /* Efecto Magneto */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* LA LÍNEA DE GRADIENTE ANIMADA */
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px; /* Grosor de la línea */
+  background: var(--gradient); /* Usa tu lila y rosa */
+  transform: scaleX(0); /* Empieza invisible y sin ancho */
+  transform-origin: center; /* Nace desde el centro hacia los lados */
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+nav a:hover::after {
+  transform: scaleX(0.8); /* Se expande al 80% del ancho del texto */
+}
     /* SECCIONES ANIMADAS */
     section { 
       padding: 120px 8%; 
@@ -294,53 +409,112 @@
     /* TRABAJOS */
     .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 50px; }
     
-    .work-item {
-      position: relative;
-      height: 450px;
-      border-radius: 30px;
-      overflow: hidden;
-      background: var(--negro-card);
-      border: 1px solid var(--border);
-      transition: all 0.5s ease;
-      /* Efecto de luz por defecto para que funcione el JS */
-      background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(155, 92, 255, 0.15), transparent 40%);
-    }
+    /* Contenedor del proyecto */
+.work-item {
+  border: 1px solid rgba(255, 255, 255, 0.12); 
+  background: rgba(255, 255, 255, 0.03);
+  position: relative;
+  height: 450px;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: var(--negro-card);
+  border: 1px solid var(--border);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+}
 
-    .work-item:hover {
-      border-color: var(--rosa);
-      box-shadow: 0 0 30px rgba(155, 92, 255, 0.2);
-    }
+/* Imagen de fondo con filtro */
+.work-item::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: var(--bg-image); /* La definiremos en el HTML */
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) brightness(0.4); /* Blanco y negro y oscuro */
+  transition: all 0.8s ease;
+  z-index: 1;
+}
 
-    .work-content {
-      position: absolute;
-      bottom: 0; left: 0; width: 100%;
-      padding: 40px;
-      background: linear-gradient(to top, var(--negro-ebano), transparent);
-    }
+/* Capa de luz (JS) - Subimos el z-index para que esté sobre la imagen pero bajo el texto */
+.work-item .light-effect {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(155, 92, 255, 0.15), transparent 40%);
+}
 
+/* Hover: La imagen cobra vida */
+.work-item:hover::before {
+  filter: grayscale(0%) brightness(0.6);
+  transform: scale(1.05);
+}
+
+.work-item:hover {
+  border-color: var(--rosa);
+  box-shadow: 0 0 40px rgba(155, 92, 255, 0.2);
+}
+
+/* Contenido del texto (Z-INDEX alto para que siempre se vea) */
+.work-content {
+  position: absolute;
+  bottom: 0; left: 0; width: 100%;
+  padding: 40px;
+  background: linear-gradient(to top, rgba(3, 3, 5, 0.95), transparent);
+  z-index: 3; /* Por encima de todo */
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
+}
+
+.work-item:hover .work-content {
+  transform: translateY(0);
+}
+
+.work-content h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.work-content p {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
     /* PRECIOS */
     .price-section { text-align: center; }
     .price-box {
-      max-width: 500px;
-      margin: 60px auto;
-      background: linear-gradient(145deg, #0a0a0f 0%, #030305 100%);
-      padding: 60px;
-      border-radius: 40px;
-      border: 1px solid var(--lila);
-      position: relative;
-    }
+  max-width: 550px;
+  margin: 60px auto;
+  background: linear-gradient(145deg, #0a0a0f 0%, #030305 100%);
+  padding: 50px;
+  border-radius: 40px;
+  border: 1.5px solid var(--lila);
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
 
-    .price-box::after {
-      content: 'OFERTA DE LANZAMIENTO';
-      position: absolute;
-      top: -15px; left: 50%;
-      transform: translateX(-50%);
-      background: var(--gradient);
-      padding: 5px 20px;
-      border-radius: 50px;
-      font-size: 0.7rem;
-      font-weight: 800;
-    }
+.price-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(155, 92, 255, 0.15);
+}
+
+/* El badge de oferta más llamativo */
+.price-box::after {
+  content: 'OFERTA DE LANZAMIENTO';
+  position: absolute;
+  top: -18px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--gradient);
+  padding: 8px 25px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(255, 79, 163, 0.4);
+}
 
     .price-amount { font-size: 5rem; font-weight: 800; line-height: 1; margin: 30px 0; font-family: 'Outfit'; }
     .price-amount span { font-size: 1.5rem; color: var(--text-gray); }
@@ -412,13 +586,44 @@
       opacity: 0.5;
       font-size: 0.9rem;
     }
+/* --- EFECTOS DE CONTACTO --- */
+.contact-card.ws:hover { 
+  background: rgba(37, 211, 102, 0.05) !important; 
+  border-color: #25D366 !important; 
+}
 
+.contact-card.mail:hover { 
+  background: rgba(155, 92, 255, 0.05) !important; 
+  border-color: var(--lila) !important; 
+}
+
+/* Animación del icono (el círculo del logo de WhatsApp/Email) */
+.contact-card:hover .icon-circle {
+  transform: scale(1.15) rotate(5deg);
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
     @media (max-width: 900px) {
       .about-grid { grid-template-columns: 1fr; }
       nav ul { display: none; }
       .hero h1 { font-size: 4rem; }
     }
   </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "kataX Studio",
+  "image": "https://tu-dominio.es/logokataX.png",
+  "url": "https://tu-dominio.es",
+  "telephone": "+34NUMERO",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "ES"
+  },
+  "description": "Estudio boutique de diseño y desarrollo web especializado en React e Inteligencia Artificial."
+}
+</script>
 </head>
 <body>
 <a href="https://wa.me/TU_NUMERO_AQUI" class="whatsapp-float" target="_blank">
@@ -435,21 +640,24 @@
     </a>
     <nav>
       <ul>
-        <li><a href="#about">Filosofía</a></li>
-        <li><a href="#work">Showcase</a></li>
-        <li><a href="#prices">Inversión</a></li>
+        <li><a href="#about">Nosotros</a></li>
+        <li><a href="#work">Proyectos</a></li>
+        <li><a href="#prices">Servicio</a></li>
         <li><a href="#contact">Contacto</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section id="hero" class="hero visible">
-      <div class="hero-badge">FRONTEND ARTISTS & AI SOLUTIONS</div>
-      <h1>Creamos el <br><span>Futuro Digital.</span></h1>
-      <p>No somos una agencia convencional. Somos un estudio boutique que fusiona el diseño de autor con la potencia de la Inteligencia Artificial para marcas que exigen excelencia.</p>
-      <a href="#contact" class="btn btn-glow">Reservar Consultoría</a>
-    </section>
+   <section id="hero" class="hero visible">
+  <div class="hero-badge">FRONTEND ARTISTS & AI SOLUTIONS</div>
+  <h1>Creamos el <br><span class="gradient-animate">Futuro Digital.</span></h1>
+  <p class="hero-text">
+    <span class="typewriter">Diseño de autor fusionado con Inteligencia Artificial.</span><br>
+    <span class="typewriter-delay">Exclusividad digital para marcas que no aceptan lo común.</span>
+  </p>
+  <a href="#contact" class="btn btn-glow">Reservar Consultoría</a>
+</section>
 
     <section id="about">
       <div class="about-grid">
@@ -470,28 +678,35 @@
     </section>
 
     <section id="work">
-      <h2 style="font-size: 3rem; margin-bottom: 50px; text-align: center;">Proyectos <span>Destacados</span></h2>
-      <div class="work-grid">
-        <div class="work-item">
-          <div class="work-content">
-            <h3>CalendAxel</h3>
-            <p>Sistema de gestión inteligente con arquitectura React.</p>
-          </div>
-        </div>
-        <div class="work-item">
-          <div class="work-content">
-            <h3>Fisiolución</h3>
-            <p>Landing page emocional con optimización de conversión.</p>
-          </div>
-        </div>
-        <div class="work-item">
-          <div class="work-content">
-            <h3>NoxLabs V1</h3>
-            <p>Ecosistema digital para creadores de tecnología.</p>
-          </div>
-        </div>
+  <h2 style="font-size: 3.5rem; margin-bottom: 50px; text-align: center;">Proyectos</h2>
+  <div class="work-grid">
+    
+    <div class="work-item" style="--bg-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop')">
+      <div class="light-effect"></div>
+      <div class="work-content">
+        <h3>CalendAxel</h3>
+        <p>Sistema de gestión inteligente con arquitectura React.</p>
       </div>
-    </section>
+    </div>
+
+    <div class="work-item" style="--bg-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2340&auto=format&fit=crop')">
+      <div class="light-effect"></div>
+      <div class="work-content">
+        <h3>Fisiolución</h3>
+        <p>Landing page emocional con optimización de conversión.</p>
+      </div>
+    </div>
+
+    <div class="work-item" style="--bg-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2340&auto=format&fit=crop')">
+      <div class="light-effect"></div>
+      <div class="work-content">
+        <h3>NoxLabs V1</h3>
+        <p>Ecosistema digital para creadores de tecnología.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
     <section id="prices" class="price-section">
       <h2>Inversión <span>Transparente</span></h2>
@@ -542,15 +757,23 @@
     </section>
   </main>
 
-  <footer>
-    <div>© 2026 kataX Studio · Crafted with Precision.</div>
-    <div class="logo">
-      <img src="logokataX.png" style="height: 30px; filter: none;">
-      <span style="font-size: 1.4rem;">kataX</span>
-    </div>
-  </footer>
+ <footer>
+  <div class="footer-left">
+    <p style="font-size: 0.85rem; opacity: 0.7;">© 2026 kataX Studio. <br>Crafted with Precision & AI.</p>
+  </div>
+  
+  <div class="logo" style="opacity: 1;">
+    <img src="logokataX.png" style="height: 30px; filter: grayscale(1);">
+    <span style="font-size: 1.6rem; filter: grayscale(1);">kataX</span>
+  </div>
+
+  <div class="footer-right" style="text-align: right;">
+    <a href="#hero" style="color: white; text-decoration: none; font-size: 0.85rem; opacity: 0.7;">Volver arriba ↑</a>
+  </div>
+</footer>
 
 <script>
+    
   // 1. Animación de aparición al hacer scroll (la que ya tenías)
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -606,7 +829,21 @@
       logoContainer.classList.remove('logo-flash');
     }, 400);
   });
+  // Efecto de luz dinámico mejorado
+document.querySelectorAll('.work-item').forEach(item => {
+  const light = item.querySelector('.light-effect');
+  item.addEventListener('mousemove', (e) => {
+    const rect = item.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    item.style.setProperty('--mouse-x', `${x}px`);
+    item.style.setProperty('--mouse-y', `${y}px`);
+  });
+});
 </script>
 
 </body>
 </html>
+
+
+

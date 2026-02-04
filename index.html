@@ -1,8 +1,8 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>kataX Studio | Frontend Web's</title>
+  <title>kataX | Landing Page</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
@@ -34,11 +34,213 @@
 }
 
 /* Estilos para el texto más ligero */
-.hero-text {
-  font-size: 1.1rem !important;
-  max-width: 600px !important;
+/* 1. Estilo con la barra lateral y preparación para la animación */
+/* Estilo limpio con barra lateral y escritura */
+.hero-text span {
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  font-size: 1.1rem;
+  color: #ffffff;
+  
+  /* Cursor fino e invisible al inicio */
+  border-right: 1.5px solid transparent;
+  padding-right: 4px;
+  
+  /* Bloqueo total de visibilidad inicial */
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  visibility: hidden;
+  
+  /* Sincronización: Reveal (aparece), Typing (escribe), Blink (parpadea) */
+  animation: 
+    reveal 0.1s forwards, 
+    typing-hero 2s steps(45, end) forwards,
+    blink-cursor 0.5s step-end 4; /* 4 ciclos de 0.5s = 2s exactos */
+  animation-delay: 0.8s; 
 }
 
+/* --- KEYFRAMES --- */
+
+/* Evita que se vea la L antes de tiempo */
+@keyframes reveal {
+  to { visibility: visible; }
+}
+
+/* Escribe y borra la barra al terminar */
+@keyframes typing-hero {
+  from { width: 0; border-right-color: var(--lila); }
+  to { 
+    width: 100%; 
+    border-right-color: transparent; 
+  }
+}
+
+/* Parpadeo del cursor */
+@keyframes blink-cursor {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--lila); }
+}
+/* --- MENÚ MÓVIL CORREGIDO --- */
+@media (max-width: 900px) {
+    /* Asegura que el botón hamburguesa sea visible */
+    .menu-toggle {
+        display: flex;
+        position: relative;
+        z-index: 1001;
+        cursor: pointer;
+    }
+    
+    /* Oculta la lista de navegación por defecto */
+    .nav-list {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(3, 3, 5, 0.98);
+        backdrop-filter: blur(20px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        z-index: 1000;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    /* Cuando el menú está activo, se desliza desde la derecha */
+    .nav-list.active {
+        right: 0;
+    }
+    
+    /* Estilos de los enlaces en móvil */
+    .nav-list li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-list a {
+        display: block;
+        padding: 20px;
+        font-size: 1.5rem;
+        opacity: 1;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-list a:hover {
+        background: rgba(155, 92, 255, 0.1);
+        transform: translateX(10px);
+    }
+    
+    /* Animación de las barras a X */
+    .menu-toggle.active .bar:nth-child(1) { 
+        transform: rotate(45deg) translate(8px, 8px); 
+    }
+    .menu-toggle.active .bar:nth-child(2) { 
+        opacity: 0; 
+    }
+    .menu-toggle.active .bar:nth-child(3) { 
+        transform: rotate(-45deg) translate(7px, -7px); 
+    }
+}
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; }
+  
+  /* Nuevo estilo para que no desaparezca el menú */
+  nav ul { 
+    display: flex; 
+    gap: 10px; 
+    overflow-x: auto; 
+    white-space: nowrap;
+    padding: 5px;
+    max-width: 250px; /* Para que no pise al logo */
+  }
+
+  nav a { 
+    padding: 6px 12px; 
+    font-size: 0.75rem; 
+  }
+
+  .hero h1 { font-size: 3.5rem; }
+  .hero-badge { font-size: 0.7rem; }
+}
+@media (max-width: 768px) {
+  .hero-text span {
+    /* Permitimos que el texto use varias líneas */
+    white-space: normal; 
+    width: 90% !important;
+    max-width: 100% !important;
+    display: inline-block;
+    
+    /* Quitamos la barra y la invisibilidad de desktop */
+    visibility: visible;
+    border-right: none;
+    
+    /* En móvil usamos una aparición suave más elegante */
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInMobile 0.8s ease forwards;
+    animation-delay: 0.4s;
+  }
+}
+/* Estilos base del botón (oculto en desktop) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  z-index: 1100;
+}
+
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+/* Estilos para móvil */
+@media (max-width: 900px) {
+  .menu-toggle { display: flex; }
+
+  .nav-list {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Empieza escondido a la derecha */
+    flex-direction: column;
+    background: rgba(3, 3, 5, 0.98);
+    backdrop-filter: blur(20px);
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .nav-list.active {
+    right: 0; /* Se desliza hacia adentro */
+  }
+
+  /* Animación de las barras a X */
+  .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+  .menu-toggle.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+  .menu-toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+}
+/* Animación de entrada para móviles */
+@keyframes fadeInMobile {
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
 /* Efecto Typing básico */
 .typewriter, .typewriter-delay {
   display: inline-block;
@@ -86,18 +288,28 @@
       text-decoration: none;
       font-family: 'Outfit', sans-serif;
       position: relative;
-      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     /* Efecto al poner el cursor encima */
-    .logo:hover {
-      transform: translateY(-2px); /* Eleva el logo sutilmente */
-    }
+   /* Estado normal: añadimos una transición larga de 1.5s */
+.logo img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(155, 92, 255, 0.5));
+  /* Controla la velocidad de regreso cuando quitas el ratón */
+  transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1), filter 0.8s ease;
+}
 
-    .logo:hover img {
-      filter: drop-shadow(0 0 25px var(--lila)) brightness(1.2);
-      transform: rotate(-5deg) scale(1.1); /* Gira y crece un poco */
-    }
+/* Estado al pasar el ratón: inclinación suave y pausada */
+.logo:hover img {
+  /* Se inclina solo 8 grados de forma muy lenta */
+  transform: rotate(-8deg) scale(1.1); 
+  filter: drop-shadow(0 0 25px var(--lila)) brightness(1.2);
+  /* 1.5 segundos hace que la inclinación sea premium y no brusca */
+  transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1), filter 0.5s ease;
+}
 
     .logo:hover span {
       letter-spacing: 1px; /* El texto se expande elegantemente */
@@ -148,7 +360,7 @@
 
 /* El texto que aparece al lado */
 .whatsapp-float::before {
-  content: ¿¡Hablamos?';
+  content: "¡Hablemos!";
   position: absolute;
   right: 80px;
   background: rgba(8, 8, 12, 0.9);
@@ -232,18 +444,26 @@ p {
     }
 
    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 5px 8%; /* Padding reducido para un header más fino */
-      backdrop-filter: blur(20px);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid var(--border);
-      height: 85px; /* Altura fija para control total */
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 8%; 
+  backdrop-filter: blur(20px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--border);
+  height: 85px; 
+  /* --- AÑADE ESTO --- */
+  transition: all 0.3s ease; 
+}
+
+/* --- Y AÑADE ESTO DEBAJO --- */
+header:hover {
+  border-bottom: 1px solid rgba(155, 92, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
 
     .logo {
       display: flex;
@@ -382,13 +602,28 @@ nav a:hover::after {
     }
 
     .btn-glow {
-      background: var(--gradient);
-      color: #fff;
-      box-shadow: 0 10px 40px rgba(155, 92, 255, 0.4);
-    }
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 10px 40px rgba(155, 92, 255, 0.4);
+  /* --- AÑADE ESTA LÍNEA --- */
+  animation: pulse-glow 3s infinite ease-in-out;
+}
 
     .btn-glow:hover { transform: scale(1.05); box-shadow: 0 20px 60px rgba(255, 79, 163, 0.6); }
-
+@keyframes pulse-glow {
+  0% { 
+    box-shadow: 0 10px 40px rgba(155, 92, 255, 0.4); 
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 10px 60px rgba(255, 79, 163, 0.6); 
+    transform: scale(1.02); 
+  }
+  100% { 
+    box-shadow: 0 10px 40px rgba(155, 92, 255, 0.4); 
+    transform: scale(1);
+  }
+}
     /* QUIÉNES SOMOS */
     .about-grid {
       display: grid;
@@ -519,10 +754,36 @@ nav a:hover::after {
     .price-amount { font-size: 5rem; font-weight: 800; line-height: 1; margin: 30px 0; font-family: 'Outfit'; }
     .price-amount span { font-size: 1.5rem; color: var(--text-gray); }
 
-    .features-list { list-style: none; margin-bottom: 40px; text-align: left; }
-    .features-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: var(--text-gray); }
-    .features-list li::before { content: '✦'; color: var(--rosa); font-weight: bold; }
+    /* Lista de características con más espacio y mejor color */
+.features-list { 
+  list-style: none; 
+  margin-bottom: 40px; 
+  text-align: left; 
+}
 
+.features-list li { 
+  margin-bottom: 20px; /* Aumentamos el "aire" entre puntos */
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  color: #e2e2e7; /* Un blanco más brillante que el gris anterior */
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto en el diamante (✦) */
+.features-list li::before { 
+  content: '✦'; 
+  color: var(--rosa); 
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 79, 163, 0.5); /* Le da un ligero brillo */
+}
+
+/* Bonus: Al pasar el ratón, la línea se mueve un poco */
+.features-list li:hover {
+  transform: translateX(5px);
+  color: #ffffff;
+}
     /* CONTACTO */
     .contact-area { text-align: center; padding: 150px 8%; }
     .contact-area h2 { font-size: 4rem; margin-bottom: 20px; font-family: 'Outfit'; }
@@ -607,6 +868,275 @@ nav a:hover::after {
       nav ul { display: none; }
       .hero h1 { font-size: 4rem; }
     }
+    /* ... otros estilos anteriores ... */
+
+    .logo-flash {
+      filter: brightness(2) drop-shadow(0 0 20px var(--rosa)) !important;
+      transition: all 0.4s ease;
+    }
+   
+.work-item {
+    opacity: 0;
+    transform: translateY(20px); /* Menos desplazamiento */
+    transition: opacity 0.4s ease, transform 0.4s ease; /* Más rápido: 0.4s */
+}
+
+.work-item.visible-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Retrasos más cortos para animación escalonada */
+.work-item:nth-child(1).visible-item {
+    transition-delay: 0.05s; /* Más rápido: 0.05s */
+}
+
+.work-item:nth-child(2).visible-item {
+    transition-delay: 0.15s; /* Más rápido: 0.15s */
+}
+
+.work-item:nth-child(3).visible-item {
+    transition-delay: 0.25s; /* Más rápido: 0.25s */
+}
+
+/* Para más proyectos */
+.work-item:nth-child(4).visible-item {
+    transition-delay: 0.35s;
+}
+
+.work-item:nth-child(5).visible-item {
+    transition-delay: 0.45s;
+}
+/* ANIMACIÓN DE LOGO GRANDE FLOTANTE */
+/* LOGO GRANDE CON EFECTO HOVER */
+.about-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px; /* Más alto para el logo super grande */
+  perspective: 1200px;
+}
+
+.logo-hover-container {
+  position: relative;
+  width: 320px; /* MÁS GRANDE: 320px */
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Logo estático por defecto */
+.static-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: 
+    drop-shadow(0 0 10px rgba(155, 92, 255, 0.4))
+    drop-shadow(0 0 20px rgba(255, 79, 163, 0.2));
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+/* Glow estático tenue */
+.logo-hover-glow {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(
+    circle at center,
+    rgba(155, 92, 255, 0.1) 0%,
+    rgba(255, 79, 163, 0.05) 20%,
+    transparent 60%
+  );
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.6;
+  transition: all 0.5s ease;
+}
+
+/* ========== EFECTOS HOVER ========== */
+
+/* Cuando pasas el mouse sobre el contenedor */
+.logo-hover-container:hover .static-logo {
+  animation: 
+    logo-float-hover 3s ease-in-out infinite,
+    logo-rotate-3d 20s linear infinite,
+    logo-glow-pulse 2s ease-in-out infinite;
+  
+  filter: 
+    drop-shadow(0 0 15px rgba(155, 92, 255, 0.6))
+    drop-shadow(0 0 30px rgba(255, 79, 163, 0.4))
+    drop-shadow(0 0 45px rgba(155, 92, 255, 0.2));
+  transform: scale(1.05);
+}
+
+.logo-hover-container:hover .logo-hover-glow {
+  animation: glow-expand-hover 3s ease-in-out infinite;
+  background: radial-gradient(
+    circle at center,
+    rgba(155, 92, 255, 0.2) 0%,
+    rgba(255, 79, 163, 0.1) 30%,
+    transparent 70%
+  );
+  opacity: 0.9;
+  width: 380px;
+  height: 380px;
+}
+
+/* Animación de flotación al hover */
+@keyframes logo-float-hover {
+  0%, 100% {
+    transform: 
+      translateY(0) 
+      translateZ(0) 
+      rotateX(0) 
+      rotateY(0)
+      scale(1.05);
+  }
+  33% {
+    transform: 
+      translateY(-15px) 
+      translateZ(15px) 
+      rotateX(5deg) 
+      rotateY(5deg)
+      scale(1.08);
+  }
+  66% {
+    transform: 
+      translateY(10px) 
+      translateZ(-10px) 
+      rotateX(-3deg) 
+      rotateY(10deg)
+      scale(1.06);
+  }
+}
+
+/* Rotación 3D al hover */
+@keyframes logo-rotate-3d {
+  0% {
+    transform: 
+      perspective(1000px) 
+      rotateX(0deg) 
+      rotateY(0deg)
+      scale(1.05);
+  }
+  25% {
+    transform: 
+      perspective(1000px) 
+      rotateX(3deg) 
+      rotateY(10deg)
+      scale(1.06);
+  }
+  50% {
+    transform: 
+      perspective(1000px) 
+      rotateX(0deg) 
+      rotateY(20deg)
+      scale(1.05);
+  }
+  75% {
+    transform: 
+      perspective(1000px) 
+      rotateX(-3deg) 
+      rotateY(10deg)
+      scale(1.06);
+  }
+  100% {
+    transform: 
+      perspective(1000px) 
+      rotateX(0deg) 
+      rotateY(0deg)
+      scale(1.05);
+  }
+}
+
+/* Pulso de brillo al hover */
+@keyframes logo-glow-pulse {
+  0%, 100% {
+    filter: 
+      drop-shadow(0 0 15px rgba(155, 92, 255, 0.6))
+      drop-shadow(0 0 30px rgba(255, 79, 163, 0.4))
+      drop-shadow(0 0 45px rgba(155, 92, 255, 0.2))
+      brightness(1);
+  }
+  50% {
+    filter: 
+      drop-shadow(0 0 20px rgba(155, 92, 255, 0.8))
+      drop-shadow(0 0 40px rgba(255, 79, 163, 0.6))
+      drop-shadow(0 0 60px rgba(155, 92, 255, 0.3))
+      brightness(1.1);
+  }
+}
+
+/* Expansión del glow al hover */
+@keyframes glow-expand-hover {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* ========== EFECTO CLICK ========== */
+.logo-hover-container:active .static-logo {
+  animation: none;
+  transform: scale(0.95);
+  filter: 
+    drop-shadow(0 0 25px rgba(155, 92, 255, 0.8))
+    drop-shadow(0 0 50px rgba(255, 79, 163, 0.6));
+  transition: all 0.1s ease;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .about-visual {
+    height: 350px;
+    order: -1;
+  }
+  
+  .logo-hover-container {
+    width: 250px; /* Tamaño reducido para móvil */
+    height: 250px;
+  }
+  
+  .logo-hover-glow {
+    width: 270px;
+    height: 270px;
+  }
+  
+  .logo-hover-container:hover .logo-hover-glow {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-hover-container {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .logo-hover-glow {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .logo-hover-container:hover .logo-hover-glow {
+    width: 240px;
+    height: 240px;
+  }
+}
   </style>
   <script type="application/ld+json">
 {
@@ -639,18 +1169,24 @@ nav a:hover::after {
       <span>kataX</span>
     </a>
     <nav>
-      <ul>
-        <li><a href="#about">Nosotros</a></li>
-        <li><a href="#work">Proyectos</a></li>
-        <li><a href="#prices">Servicio</a></li>
-        <li><a href="#contact">Contacto</a></li>
-      </ul>
-    </nav>
+  <div class="menu-toggle" id="mobile-menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </div>
+  
+  <ul class="nav-list">
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#work">Proyectos</a></li>
+    <li><a href="#prices">Servicio</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+</nav>
   </header>
 
   <main>
    <section id="hero" class="hero visible">
-  <div class="hero-badge">FRONTEND WEB'S & MORE</div>
+  <div class="hero-badge">LANDING PAGE & MORE</div>
   <h1>Creamos <br><span class="gradient-animate"> Tu Futuro Digital.</span></h1>
   <p class="hero-text">
     <span>La web digital hecha para ti, con un diseño adaptado a tus necesidades.</span><br>
@@ -659,36 +1195,23 @@ nav a:hover::after {
 </section>
 <section id="about">
   <div class="about-grid">
-    
     <div class="about-text">
       <h2>¿Quiénes somos?</h2>
-
       <p><strong>kataX</strong> es una agencia de programación joven, versátil y obsesionada con el buen código. Para nosotros, la juventud no es un límite: es impulso, creatividad y precisión.</p>
-
       <p>Somos dos mentes emprendedoras capaces de transformar cualquier idea en una interfaz minimalista, fluida y potente. Trabajamos con <strong>HTML</strong>, <strong>CSS</strong> y <strong>Python</strong> para crear experiencias digitales limpias, rápidas y hechas a medida.</p>
-
-      <div class="stat-grid">
-        <div class="stat-card">
-          <h4>∞</h4>
-          <p>Pasión por el código</p>
-        </div>
-        <div class="stat-card">
-          <h4>&lt;/&gt;</h4>
-          <p>Adaptación total</p>
-        </div>
-      </div>
     </div>
-
+    
     <div class="about-visual">
-      <div style="width: 100%; height: 400px; background: linear-gradient(45deg, #08080c, #1a1a2e); border-radius: 40px; border: 1px solid var(--lila); display: flex; align-items: center; justify-content: center; font-size: 4rem;">
-        X
+      <!-- Logo grande que flota al hover -->
+      <div class="logo-hover-container">
+        <img src="LogokataX.png" alt="kataX Studio Logo" class="static-logo">
+        <div class="logo-hover-glow"></div>
       </div>
     </div>
-
   </div>
 </section>
-    <section id="work">
-  <h2 style="font-size: 3.5rem; margin-bottom: 50px; text-align: center;">Proyectos Destacados</h2>
+   <section id="work">
+  <h2 style="font-size: 3.5rem; margin-bottom: 50px; text-align: center; opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease;" class="visible">Proyectos Destacados</h2>
   <div class="work-grid">
     
     <div class="work-item" style="--bg-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop')">
@@ -722,7 +1245,7 @@ nav a:hover::after {
   <h2 style="font-size: 3.5rem; margin-bottom: 50px; text-align: center;">TARIFA de SERVICIO</h2>
       
       <div class="price-box">
-        <h3>FRONTEND WEB</h3>
+        <h3>LANDING WEB</h3>
         <div class="price-amount">50€<span>/pago único</span></div>
         <ul class="features-list">
           <li>Diseño exclusivo </li>
@@ -782,75 +1305,126 @@ nav a:hover::after {
 </footer>
 
 <script>
-    
-  // 1. Animación de aparición al hacer scroll (la que ya tenías)
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Elementos Globales
+  const menu = document.querySelector('#mobile-menu');
+  const menuLinks = document.querySelector('.nav-list');
+  const logoContainer = document.querySelector('.logo');
+  const workItems = document.querySelectorAll('.work-item');
+  let logoTimeout;
+
+  // 2. OBSERVER para animar secciones al hacer scroll
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15
+  };
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
     });
-  }, { threshold: 0.1 });
+  }, observerOptions);
 
-  document.querySelectorAll('section').forEach(section => observer.observe(section));
+  // 3. OBSERVER ESPECIAL para proyectos (animación escalonada RÁPIDA)
+  const projectObserverOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
 
-  // 2. SOLUCIÓN AL CLICK: Forzar el scroll manual
-  document.querySelectorAll('nav a, .btn').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+  const projectObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        // Agregar clase con delay MUCHO más corto
+        setTimeout(() => {
+          entry.target.classList.add('visible-item');
+        }, index * 80); // MUCHO más rápido: 80ms entre cada proyecto
+      }
+    });
+  }, projectObserverOptions);
+
+  // Observar todas las secciones excepto el hero
+  document.querySelectorAll('section').forEach(section => {
+    if (section.id !== 'hero') {
+      observer.observe(section);
+    }
+  });
+
+  // Observar cada proyecto individualmente
+  workItems.forEach(item => {
+    projectObserver.observe(item);
+  });
+
+  // 4. MENÚ MÓVIL
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navList = document.querySelector('.nav-list');
+
+  if (mobileMenu && navList) {
+    mobileMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileMenu.classList.toggle('active');
+      navList.classList.toggle('active');
+      document.body.style.overflow = navList.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    document.querySelectorAll('.nav-list a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        navList.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+    
+    document.addEventListener('click', (e) => {
+      if (!navList.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove('active');
+        navList.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  // 5. Navegación: Scroll Suave
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
-      
-      // Solo si el enlace empieza por #
       if (href.startsWith('#')) {
-        e.preventDefault();
         const targetId = href.substring(1);
         const targetElement = document.getElementById(targetId);
-
         if (targetElement) {
-          // Primero la hacemos visible por si el Observer falla
-          targetElement.classList.add('visible'); 
-          
-          // Calculamos la posición restando el margen del header
+          e.preventDefault();
+          targetElement.classList.add('visible');
           const offsetTop = targetElement.offsetTop - 80;
-
-          window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-          });
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
         }
       }
     });
   });
 
-  // 3. Efecto de luz en las tarjetas
-  const workItems = document.querySelectorAll('.work-item');
+  // 6. Efecto de luz dinámico en Tarjetas
   workItems.forEach(item => {
     item.addEventListener('mousemove', (e) => {
       const rect = item.getBoundingClientRect();
-      item.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-      item.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      item.style.setProperty('--mouse-x', `${x}px`);
+      item.style.setProperty('--mouse-y', `${y}px`);
     });
   });
-  // Animación especial al clickear el logo
-  const logoContainer = document.querySelector('.logo');
-  logoContainer.addEventListener('click', () => {
+
+  // 7. Animación especial al clickear el logo
+  logoContainer?.addEventListener('click', () => {
     logoContainer.classList.add('logo-flash');
-    
-    // Quitamos la clase cuando termine para que se pueda repetir
-    setTimeout(() => {
+    clearTimeout(logoTimeout);
+    logoTimeout = setTimeout(() => {
       logoContainer.classList.remove('logo-flash');
     }, 400);
   });
-  // Efecto de luz dinámico mejorado
-document.querySelectorAll('.work-item').forEach(item => {
-  const light = item.querySelector('.light-effect');
-  item.addEventListener('mousemove', (e) => {
-    const rect = item.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    item.style.setProperty('--mouse-x', `${x}px`);
-    item.style.setProperty('--mouse-y', `${y}px`);
-  });
 });
 </script>
-
 </body>
 </html>
 

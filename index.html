@@ -2,11 +2,14 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>kataX Studio | Landing Pages</title>
+  <title>kataX Studio| Landing Pages</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" href="LogokataX.png" type="image/png">
+</noscript>
+  <link rel="icon" href="LogokataX.png" type="image/png" loading="lazy">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://tu-dominio.es/">
   <meta property="og:title" content="kataX Studio | El Futuro Digital">
@@ -22,13 +25,14 @@
   --rosa: #ff4fa3;
   --negro-ebano: #030305;
   --negro-card: #08080c;
-  --border: rgba(255, 255, 255, 0.08);
-  --text-gray: #d1d1d6;
+  --border: rgba(255, 255, 255, 0.12);
+  --text-gray: #e2e2e7;
   --gradient: linear-gradient(135deg, var(--lila) 0%, var(--rosa) 100%);
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-
+html {
+  font-size: clamp(14px, 1vw + 0.5rem, 18px);
+}
 body {
   background-color: var(--negro-ebano);
   color: #ffffff;
@@ -201,6 +205,9 @@ header:hover {
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .footer-links a:hover {
@@ -221,6 +228,16 @@ header:hover {
 
 .footer-links a:hover::after {
   width: 100%;
+}
+
+.footer-links a svg {
+  opacity: 0.7;
+  transition: transform 0.3s ease;
+}
+
+.footer-links a:hover svg {
+  transform: translateY(2px);
+  opacity: 1;
 }
 
 .footer-links span {
@@ -305,15 +322,16 @@ section.visible { opacity: 1; transform: translateY(0); }
 }
 
 .hero-badge {
-  background: rgba(155, 92, 255, 0.1);
+  background: rgba(155, 92, 255, 0.15);
   border: 1px solid rgba(155, 92, 255, 0.2);
   padding: 8px 20px;
   border-radius: 100px;
   font-size: 0.8rem;
-  color: var(--lila);
+  color: #b8a0ff;
   margin-bottom: 25px;
   font-weight: 600;
   letter-spacing: 1px;
+  animation: float 3s ease-in-out infinite;
 }
 
 .hero h1 { 
@@ -331,7 +349,10 @@ section.visible { opacity: 1; transform: translateY(0); }
   -webkit-text-fill-color: transparent;
   animation: shine 4s linear infinite;
 }
-
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
 @keyframes shine {
   to { background-position: 200% center; }
 }
@@ -521,6 +542,7 @@ section.visible { opacity: 1; transform: translateY(0); }
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   background-image: var(--bg-image);
+  will-change: transform, filter;
   background-size: cover;
   background-position: center;
   filter: grayscale(100%) brightness(0.4);
@@ -817,11 +839,6 @@ footer {
   font-size: 0.9rem;
 }
 
-.logo-flash {
-  filter: brightness(2) drop-shadow(0 0 20px var(--rosa)) !important;
-  transition: all 0.4s ease;
-}
-
 @media (max-width: 900px) {
   .menu-toggle { display: flex; }
   
@@ -896,6 +913,206 @@ footer {
   .stat-box { padding: 25px 15px; }
   .stat-box h3 { font-size: 1.3rem; }
 }
+@media (prefers-contrast: high) {
+  :root {
+    --text-gray: #ffffff;
+    --border: rgba(255, 255, 255, 0.3);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+@media (max-width: 600px) {
+  footer {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .footer-left {
+    order: 2;
+  }
+  
+  .footer-logo {
+    order: 1;
+  }
+  
+  .footer-links {
+    justify-content: center;
+  }
+}
+
+.stat-box {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.stat-box:nth-child(1) { animation-delay: 0.1s; }
+.stat-box:nth-child(2) { animation-delay: 0.3s; }
+.stat-box:nth-child(3) { animation-delay: 0.5s; }
+.stat-box:nth-child(4) { animation-delay: 0.7s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.stat-box svg {
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+.stat-box:nth-child(1) svg { animation-delay: 0s; }
+.stat-box:nth-child(2) svg { animation-delay: 0.2s; }
+.stat-box:nth-child(3) svg { animation-delay: 0.4s; }
+.stat-box:nth-child(4) svg { animation-delay: 0.6s; }
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(5deg);
+  }
+}
+
+.stat-box h3 {
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-box h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient);
+  animation: slideIn 0.8s ease-out forwards;
+  animation-delay: 1s;
+}
+
+.stat-box:nth-child(1) h3::after { animation-delay: 1.1s; }
+.stat-box:nth-child(2) h3::after { animation-delay: 1.3s; }
+.stat-box:nth-child(3) h3::after { animation-delay: 1.5s; }
+.stat-box:nth-child(4) h3::after { animation-delay: 1.7s; }
+
+@keyframes slideIn {
+  to {
+    left: 0;
+  }
+}
+
+.stat-box p {
+  animation: fadeInText 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.stat-box:nth-child(1) p { animation-delay: 0.8s; }
+.stat-box:nth-child(2) p { animation-delay: 1s; }
+.stat-box:nth-child(3) p { animation-delay: 1.2s; }
+.stat-box:nth-child(4) p { animation-delay: 1.4s; }
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#about {
+  padding-bottom: 350px !important;
+}
+
+#work {
+  position: relative;
+  padding-top: 200px;
+}
+
+#work::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(155, 92, 255, 0.3) 30%, 
+    rgba(255, 79, 163, 0.3) 70%, 
+    transparent 100%
+  );
+}
+
+#prices {
+  position: relative;
+  padding-top: 200px;
+}
+
+#prices::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(155, 92, 255, 0.3) 30%, 
+    rgba(255, 79, 163, 0.3) 70%, 
+    transparent 100%
+  );
+}
+
+#contact {
+  position: relative;
+  padding-top: 200px;
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(155, 92, 255, 0.3) 30%, 
+    rgba(255, 79, 163, 0.3) 70%, 
+    transparent 100%
+  );
+}
+
+#about {
+  scroll-margin-top: 120px;
+}
+
+#work {
+  scroll-margin-top: 120px;
+}
+
+#prices {
+  scroll-margin-top: 120px;
+}
+
+#contact {
+  scroll-margin-top: 120px;
+}
   </style>
   <script type="application/ld+json">
 {
@@ -912,6 +1129,7 @@ footer {
   },
   "description": "Estudio boutique de diseño y desarrollo web especializado en React e Inteligencia Artificial."
 }
+
 </script>
 </head>
 <body>
@@ -934,7 +1152,7 @@ footer {
       <span class="bar"></span>
       <span class="bar"></span>
     </div>
-    <ul class="nav-list">
+    <ul class="nav-list" id="nav-list">
       <li><a href="#about">Nosotros</a></li>
       <li><a href="#work">Proyectos</a></li>
       <li><a href="#prices">Servicio</a></li>
@@ -961,38 +1179,38 @@ footer {
         <p>Somos dos mentes emprendedoras capaces de transformar cualquier idea en una interfaz minimalista, fluida y potente. Trabajamos con <strong>HTML</strong>, <strong>CSS</strong> y <strong>Python</strong> para crear experiencias digitales limpias, rápidas y hechas a medida.</p>
       </div>
       <div class="stats-visual">
-        <div class="stat-box">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="4 17 10 11 4 5"></polyline>
-            <line x1="12" y1="19" x2="20" y2="19"></line>
-          </svg>
-          <h3>Clean</h3>
-          <p>Código puro</p>
-        </div>
-        <div class="stat-box">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-          </svg>
-          <h3>∞ Tazas</h3>
-          <p>Café negro</p>
-        </div>
-        <div class="stat-box">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-            <line x1="8" y1="21" x2="16" y2="21"></line>
-            <line x1="12" y1="17" x2="12" y2="21"></line>
-          </svg>
-          <h3>5+</h3>
-          <p>Webs lanzadas</p>
-        </div>
-        <div class="stat-box">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-          </svg>
-          <h3>&lt; 24h</h3>
-          <p>Respuesta</p>
-        </div>
-      </div>
+ <div class="stat-box">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+  </svg>
+  <h3>CÓDIGO</h3>
+  <p>HTML/CSS/JS</p>
+</div>
+  <div class="stat-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <polyline points="12 6 12 12 16 14"/>
+    </svg>
+    <h3>24/7</h3>
+    <p>Soporte real</p>
+  </div>
+  <div class="stat-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+      <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+    </svg>
+    <h3>100%</h3>
+    <p>Hecho a medida</p>
+  </div>
+  <div class="stat-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+      <polyline points="22,6 12,13 2,6"/>
+    </svg>
+    <h3>&lt;1h</h3>
+    <p>Respuesta email</p>
+  </div>
+</div>
     </div>
   </section>
 
@@ -1072,25 +1290,42 @@ footer {
   <div class="footer-left">
     <p style="font-size: 0.85rem; opacity: 0.7;">2026 kataX Studio.<br>All rights reserved ©</p>
     <div class="footer-links">
-      <a href="PdP _ katax Studio.pdf" download>Política de Privacidad</a>
+      <a href="PdP _ katax Studio.pdf" download>
+        Política de Privacidad
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+      </a>
       <span>•</span>
-      <a href="TyC _ kataX Studio.pdf" download>Términos y Condiciones</a>
+      <a href="TyC _ kataX Studio.pdf" download>
+        Términos y Condiciones
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+      </a>
     </div>
   </div>
   
   <a href="#hero" class="footer-logo">
-    <img src="LogokataX.png" alt="Logo">
+    <img src="LogokataX.png" alt="Logo" loading="lazy">
     <span>kataX</span>
   </a>
 </footer>
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const menu = document.querySelector('#mobile-menu');
-  const menuLinks = document.querySelector('.nav-list');
-  const logoContainer = document.querySelector('.logo');
+  const emailParts = ['general', 'katax.es'];
+  const email = emailParts.join('@');
+  const mailCard = document.querySelector('.contact-card.mail');
+  if (mailCard) {
+    mailCard.href = `mailto:${email}`;
+    mailCard.querySelector('.val').textContent = email;
+  }
+
   const workItems = document.querySelectorAll('.work-item');
-  let logoTimeout;
 
   const observerOptions = {
     root: null,
@@ -1166,11 +1401,27 @@ document.addEventListener('DOMContentLoaded', () => {
       if (href.startsWith('#')) {
         const targetId = href.substring(1);
         const targetElement = document.getElementById(targetId);
+        
         if (targetElement) {
           e.preventDefault();
-          targetElement.classList.add('visible');
-          const offsetTop = targetElement.offsetTop - 80;
-          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+          
+          let extraOffset = 0;
+          if (targetId === 'about') {
+            extraOffset = 50;
+          }
+          
+          const headerHeight = 85;
+          const targetPosition = targetElement.offsetTop - headerHeight - extraOffset;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+          
+        
+          setTimeout(() => {
+            targetElement.classList.add('visible');
+          }, 100);
         }
       }
     });
@@ -1186,15 +1437,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  logoContainer?.addEventListener('click', () => {
-    logoContainer.classList.add('logo-flash');
-    clearTimeout(logoTimeout);
-    logoTimeout = setTimeout(() => {
-      logoContainer.classList.remove('logo-flash');
-    }, 400);
+  document.querySelectorAll('.btn-glow, .contact-card').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const text = e.currentTarget.textContent.trim().substring(0, 20);
+      console.log(`Click: ${text}`);
+    });
   });
 });
 </script>
 </body>
 </html>
+
 

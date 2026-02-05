@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>kataX Studio | Landing Pages</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="LogokataX.png" type="image/png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tu-dominio.es/">
+  <meta property="og:title" content="kataX Studio | El Futuro Digital">
+  <meta property="og:description" content="Transformamos ideas en interfaces premium. Web profesional por 50€/mes.">
+  <meta property="og:image" content="https://tu-dominio.es/preview-image.jpg">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="kataX Studio">
+  <meta property="twitter:description" content="Diseño de autor fusionado con Inteligencia Artificial.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+:root {
+  --lila: #9b5cff;
+  --rosa: #ff4fa3;
+  --negro-ebano: #030305;
+  --negro-card: #08080c;
+  --border: rgba(255, 255, 255, 0.08);
+  --text-gray: #d1d1d6;
+  --gradient: linear-gradient(135deg, var(--lila) 0%, var(--rosa) 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+  background-color: var(--negro-ebano);
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+p {
+  color: var(--text-gray);
+  line-height: 1.7; 
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+.bg-main {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: -1;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(155, 92, 255, 0.07) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255, 79, 163, 0.07) 0%, transparent 40%);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 8%; 
+  backdrop-filter: blur(20px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--border);
+  height: 85px; 
+  transition: all 0.3s ease; 
+}
+
+header:hover {
+  border-bottom: 1px solid rgba(155, 92, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+  margin-right: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(155, 92, 255, 0.5)); 
+  transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1), filter 0.8s ease;
+}
+
+.logo:hover img {
+  transform: rotate(-8deg) scale(1.1); 
+  filter: drop-shadow(0 0 25px var(--lila)) brightness(1.2);
+  transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1), filter 0.5s ease;
+}
+
+.logo span {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin-top: 5px;
+  margin-left: -5px;
+  transition: all 0.4s ease;
+}
+
+.logo:hover span {
+  letter-spacing: 1px;
+  text-shadow: 0 0 15px rgba(255, 79, 163, 0.5);
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient);
+  transition: width 0.4s ease;
+}
+
+.logo:hover::after {
+  width: 100%;
+}
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.footer-logo img {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(1) brightness(0.8);
+  transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1), filter 0.8s ease;
+}
+
+.footer-logo:hover img {
+  transform: rotate(-8deg) scale(1.1);
+  filter: grayscale(1) brightness(1) drop-shadow(0 0 10px rgba(128, 128, 128, 0.5));
+  transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1), filter 0.5s ease;
+}
+
+.footer-logo span {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #888;
+  -webkit-text-fill-color: #888;
+  background: none;
+  line-height: 1;
+  margin-top: 2px;
+  margin-left: -2px;
+  transition: all 0.4s ease;
+}
+
+.footer-logo:hover span {
+  letter-spacing: 1px;
+  color: #aaa;
+  -webkit-text-fill-color: #aaa;
+  text-shadow: 0 0 15px rgba(170, 170, 170, 0.3);
+}
+
+.footer-logo::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #666 0%, #999 100%);
+  transition: width 0.4s ease;
+}
+
+.footer-logo:hover::after {
+  width: 100%;
+}
+.footer-links {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.footer-links a {
+  color: var(--text-gray);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.footer-links a:hover {
+  color: #fff;
+  opacity: 1;
+}
+
+.footer-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(135deg, #666 0%, #999 100%);
+  transition: width 0.3s ease;
+}
+
+.footer-links a:hover::after {
+  width: 100%;
+}
+
+.footer-links span {
+  color: var(--text-gray);
+  opacity: 0.4;
+}
+nav ul { display: flex; list-style: none; gap: 40px; }
+
+nav a {  
+  text-decoration: none; 
+  color: #fff; 
+  font-size: 0.85rem; 
+  font-weight: 500; 
+  opacity: 0.6; 
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+}
+
+nav a:hover { 
+  opacity: 1; 
+  color: #fff;
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+nav a:hover::after {
+  transform: scaleX(0.8);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  z-index: 1100;
+}
+
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+section { 
+  padding: 120px 8%; 
+  opacity: 0; 
+  transform: translateY(40px); 
+  transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
+  scroll-margin-top: 100px;
+}
+
+section.visible { opacity: 1; transform: translateY(0); }
+
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-badge {
+  background: rgba(155, 92, 255, 0.1);
+  border: 1px solid rgba(155, 92, 255, 0.2);
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  color: var(--lila);
+  margin-bottom: 25px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.hero h1 { 
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(3rem, 10vw, 6.5rem); 
+  font-weight: 700; 
+  line-height: 0.95; 
+  margin-bottom: 30px; 
+}
+
+.gradient-animate {
+  background: linear-gradient(120deg, var(--lila), var(--rosa), var(--lila));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+.hero-text span {
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  font-size: 1.1rem;
+  color: #ffffff;
+  border-right: 1.5px solid transparent;
+  padding-right: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  visibility: hidden;
+  animation: 
+    reveal 0.1s forwards, 
+    typing-hero 2s steps(45, end) forwards,
+    blink-cursor 0.5s step-end 4;
+  animation-delay: 0.8s; 
+}
+
+@keyframes reveal {
+  to { visibility: visible; }
+}
+
+@keyframes typing-hero {
+  from { width: 0; border-right-color: var(--lila); }
+  to { 
+    width: 100%; 
+    border-right-color: transparent; 
+  }
+}
+
+@keyframes blink-cursor {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--lila); }
+}
+
+.hero p { 
+  max-width: 700px; 
+  font-size: 1.2rem; 
+  color: var(--text-gray); 
+  margin-bottom: 45px; 
+  line-height: 1.6;
+}
+
+.btn {
+  padding: 20px 50px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: 0.5s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-glow {
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 10px 40px rgba(155, 92, 255, 0.4);
+  animation: pulse-glow 3s infinite ease-in-out;
+}
+
+.btn-glow:hover { 
+  transform: scale(1.05); 
+  box-shadow: 0 20px 60px rgba(255, 79, 163, 0.6); 
+}
+
+@keyframes pulse-glow {
+  0% { 
+    box-shadow: 0 10px 40px rgba(155, 92, 255, 0.4); 
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 10px 60px rgba(255, 79, 163, 0.6); 
+    transform: scale(1.02); 
+  }
+  100% { 
+    box-shadow: 0 10px 40px rgba(155, 92, 255, 0.4); 
+    transform: scale(1);
+  }
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-text h2 { 
+  font-size: 3rem; 
+  margin-bottom: 30px; 
+  font-family: 'Outfit', sans-serif; 
+}
+
+.about-text p { 
+  font-size: 1.15rem; 
+  margin-bottom: 25px; 
+}
+
+.stats-visual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  height: 100%;
+  align-content: center;
+}
+
+.stat-box {
+  background: linear-gradient(145deg, #0f0f14 0%, #050508 100%);
+  border: 1px solid rgba(155, 92, 255, 0.15);
+  border-radius: 24px;
+  padding: 35px 25px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.stat-box:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255, 79, 163, 0.4);
+  box-shadow: 0 20px 40px rgba(155, 92, 255, 0.15);
+}
+
+.stat-box svg {
+  width: 32px;
+  height: 32px;
+  color: var(--lila);
+  margin-bottom: 15px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stat-box h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.stat-box p {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.work-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+  gap: 30px; 
+  margin-top: 50px; 
+}
+
+.work-item {
+  border: 1px solid rgba(255, 255, 255, 0.12); 
+  background: rgba(255, 255, 255, 0.03);
+  position: relative;
+  height: 450px;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: var(--negro-card);
+  border: 1px solid var(--border);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.work-item.visible-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.work-item:nth-child(1).visible-item { transition-delay: 0.05s; }
+.work-item:nth-child(2).visible-item { transition-delay: 0.15s; }
+.work-item:nth-child(3).visible-item { transition-delay: 0.25s; }
+.work-item:nth-child(4).visible-item { transition-delay: 0.35s; }
+.work-item:nth-child(5).visible-item { transition-delay: 0.45s; }
+
+.work-item::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) brightness(0.4);
+  transition: all 0.8s ease;
+  z-index: 1;
+}
+
+.work-item .light-effect {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(155, 92, 255, 0.15), transparent 40%);
+}
+
+.work-item:hover::before {
+  filter: grayscale(0%) brightness(0.6);
+  transform: scale(1.05);
+}
+
+.work-item:hover {
+  border-color: var(--rosa);
+  box-shadow: 0 0 40px rgba(155, 92, 255, 0.2);
+}
+
+.work-content {
+  position: absolute;
+  bottom: 0; left: 0; width: 100%;
+  padding: 40px;
+  background: linear-gradient(to top, rgba(3, 3, 5, 0.95), transparent);
+  z-index: 3;
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
+}
+
+.work-item:hover .work-content {
+  transform: translateY(0);
+}
+
+.work-content h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.work-content p {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.price-section { text-align: center; }
+
+.price-box {
+  max-width: 550px;
+  margin: 60px auto;
+  background: linear-gradient(145deg, #0a0a0f 0%, #030305 100%);
+  padding: 50px;
+  border-radius: 40px;
+  border: 1.5px solid var(--lila);
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.price-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(155, 92, 255, 0.15);
+}
+
+.price-box::after {
+  content: 'OFERTA DE LANZAMIENTO';
+  position: absolute;
+  top: -18px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--gradient);
+  padding: 8px 25px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(255, 79, 163, 0.4);
+}
+
+.price-amount { 
+  font-size: 5rem; 
+  font-weight: 800; 
+  line-height: 1; 
+  margin: 30px 0; 
+  font-family: 'Outfit'; 
+}
+
+.price-amount span { 
+  font-size: 1.5rem; 
+  color: var(--text-gray); 
+}
+
+.features-list { 
+  list-style: none; 
+  margin-bottom: 40px; 
+  text-align: left; 
+}
+
+.features-list li { 
+  margin-bottom: 20px;
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  color: #e2e2e7;
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.features-list li::before { 
+  content: '✦'; 
+  color: var(--rosa); 
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 79, 163, 0.5);
+}
+
+.features-list li:hover {
+  transform: translateX(5px);
+  color: #ffffff;
+}
+
+.contact-area { 
+  text-align: center; 
+  padding: 150px 8%; 
+}
+
+.contact-area h2 { 
+  font-size: 4rem; 
+  margin-bottom: 20px; 
+  font-family: 'Outfit'; 
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 900px;
+  margin: 50px auto 0;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  padding: 40px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: white;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.contact-card.ws:hover { 
+  background: rgba(37, 211, 102, 0.05);
+  border-color: #25D366; 
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.1); 
+}
+
+.contact-card.mail:hover { 
+  background: rgba(155, 92, 255, 0.05);
+  border-color: var(--lila); 
+  box-shadow: 0 10px 30px rgba(155, 92, 255, 0.1); 
+}
+
+.contact-card:hover .icon-circle {
+  transform: scale(1.15) rotate(5deg);
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.ws .icon-circle { 
+  background: rgba(37, 211, 102, 0.1); 
+  color: #25D366; 
+}
+
+.mail .icon-circle { 
+  background: rgba(155, 92, 255, 0.1); 
+  color: var(--lila); 
+}
+
+.contact-card h3 { 
+  font-family: 'Outfit'; 
+  font-size: 1.5rem; 
+  margin-bottom: 10px; 
+}
+
+.contact-card p { 
+  font-size: 0.9rem; 
+  color: var(--text-gray); 
+  margin-bottom: 20px; 
+}
+
+.contact-card .val { 
+  font-weight: 700; 
+  font-size: 1.1rem; 
+  color: white; 
+  transition: 0.3s; 
+}
+
+.contact-card:hover .val { 
+  color: var(--rosa); 
+}
+
+.whatsapp-float {
+  position: fixed;
+  width: 65px;
+  height: 65px;
+  bottom: 30px;
+  right: 30px;
+  background: var(--gradient);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 2000;
+  box-shadow: 0 10px 30px rgba(155, 92, 255, 0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  animation: pulse-whatsapp 2s infinite;
+}
+
+.whatsapp-float::before {
+  content: "¡Hablemos!";
+  position: absolute;
+  right: 80px;
+  background: rgba(8, 8, 12, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 8px 15px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  border: 1px solid var(--border);
+  opacity: 0;
+  transform: translateX(20px);
+  transition: 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1) rotate(8deg);
+  box-shadow: 0 15px 45px rgba(255, 79, 163, 0.6);
+}
+
+.whatsapp-float:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.whatsapp-float svg {
+  width: 35px;
+  height: 35px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+@keyframes pulse-whatsapp {
+  0% { box-shadow: 0 0 0 0 rgba(155, 92, 255, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(155, 92, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(155, 92, 255, 0); }
+}
+
+footer {
+  padding: 60px 8%;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.5;
+  font-size: 0.9rem;
+}
+
+.logo-flash {
+  filter: brightness(2) drop-shadow(0 0 20px var(--rosa)) !important;
+  transition: all 0.4s ease;
+}
+
+@media (max-width: 900px) {
+  .menu-toggle { display: flex; }
+  
+  .nav-list {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(3, 3, 5, 0.98);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1000;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .nav-list.active { right: 0; }
+  
+  .nav-list li { width: 100%; text-align: center; }
+  
+  .nav-list a {
+    display: block;
+    padding: 20px;
+    font-size: 1.5rem;
+    opacity: 1;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-list a:hover {
+    background: rgba(155, 92, 255, 0.1);
+    transform: translateX(10px);
+  }
+  
+  .menu-toggle.active .bar:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+  .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+  .menu-toggle.active .bar:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+  
+  .about-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 4rem; }
+  .stats-visual { margin-top: 40px; }
+}
+
+@media (max-width: 768px) {
+  .hero-text span {
+    white-space: normal; 
+    width: 90% !important;
+    max-width: 100% !important;
+    display: inline-block;
+    visibility: visible;
+    border-right: none;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInMobile 0.8s ease forwards;
+    animation-delay: 0.4s;
+  }
+  
+  @keyframes fadeInMobile {
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-box { padding: 25px 15px; }
+  .stat-box h3 { font-size: 1.3rem; }
+}
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "kataX Studio",
+  "image": "https://tu-dominio.es/logokataX.png",
+  "url": "https://tu-dominio.es",
+  "telephone": "+34 631 90 24 74",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "ES"
+  },
+  "description": "Estudio boutique de diseño y desarrollo web especializado en React e Inteligencia Artificial."
+}
+</script>
+</head>
+<body>
+<a href="https://wa.me/34631902474" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <svg width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+  </svg>
+</a>
+
+<div class="bg-main"></div>
+
+<header>
+  <a href="#hero" class="logo">
+    <img src="LogokataX.png" alt="Logo">
+    <span>kataX</span>
+  </a>
+  <nav>
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <ul class="nav-list">
+      <li><a href="#about">Nosotros</a></li>
+      <li><a href="#work">Proyectos</a></li>
+      <li><a href="#prices">Servicio</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="hero" class="hero visible">
+    <div class="hero-badge">LANDING PAGES & MORE</div>
+    <h1>Creamos <br><span class="gradient-animate">Tu Futuro Digital.</span></h1>
+    <p class="hero-text">
+      <span>La web digital hecha para ti, con un diseño adaptado a tus necesidades.</span>
+    </p>
+    <a href="#contact" class="btn btn-glow">Contactar con nosotros</a>
+  </section>
+
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>¿Quiénes somos?</h2>
+        <p><strong>kataX</strong> es una agencia de programación joven, versátil y obsesionada con el buen código. Para nosotros, la juventud no es un límite: es impulso, creatividad y precisión.</p>
+        <p>Somos dos mentes emprendedoras capaces de transformar cualquier idea en una interfaz minimalista, fluida y potente. Trabajamos con <strong>HTML</strong>, <strong>CSS</strong> y <strong>Python</strong> para crear experiencias digitales limpias, rápidas y hechas a medida.</p>
+      </div>
+      <div class="stats-visual">
+        <div class="stat-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="4 17 10 11 4 5"></polyline>
+            <line x1="12" y1="19" x2="20" y2="19"></line>
+          </svg>
+          <h3>Clean</h3>
+          <p>Código puro</p>
+        </div>
+        <div class="stat-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+          </svg>
+          <h3>∞ Tazas</h3>
+          <p>Café negro</p>
+        </div>
+        <div class="stat-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <h3>5+</h3>
+          <p>Webs lanzadas</p>
+        </div>
+        <div class="stat-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <h3>&lt; 24h</h3>
+          <p>Respuesta</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <h2 style="font-size: 3.5rem; margin-bottom: 50px; text-align: center;" class="visible">Proyectos Destacados</h2>
+    <div class="work-grid">
+      <div class="work-item" style="--bg-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop')">
+        <div class="light-effect"></div>
+        <div class="work-content">
+          <h3>EJEMPLO 1</h3>
+          <p>(Todavía estamos trabajando en esto)</p>
+        </div>
+      </div>
+      <div class="work-item" style="--bg-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2340&auto=format&fit=crop')">
+        <div class="light-effect"></div>
+        <div class="work-content">
+          <h3>EJEMPLO 2</h3>
+          <p>(Todavía estamos trabajando en esto)</p>
+        </div>
+      </div>
+      <div class="work-item" style="--bg-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2340&auto=format&fit=crop')">
+        <div class="light-effect"></div>
+        <div class="work-content">
+          <h3>EJEMPLO 3</h3>
+          <p>(Todavía estamos trabajando en esto)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prices" class="price-section">
+    <h2 style="font-size: 3.5rem; margin-bottom: 50px; text-align: center;">TARIFA de SERVICIO</h2>
+    <div class="price-box">
+      <h3>LANDING PAGE</h3>
+      <div class="price-amount">49.99€<span>/pago único</span></div>
+      <ul class="features-list">
+        <li>Diseño exclusivo</li>
+        <li>Desarrollo con HTML, PYTHON y CSS</li>
+        <li>Mantenimiento 24/7</li>
+        <li>Optimización SEO y Velocidad Google Core</li>
+        <li>Integración de herramientas de IA</li>
+        <li>Soporte directo 24/7</li>
+      </ul>
+      <a href="#contact" class="btn btn-glow" style="display: block;">Quiero mi Web</a>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-area">
+    <h2>¿Hablamos?</h2>
+    <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto;">Conecta con nosotros. Estamos listos para rescatar tu idea y darle la forma digital que merece.</p>
+    <div class="contact-grid">
+      <a href="https://wa.me/34631902474" target="_blank" rel="noopener noreferrer" class="contact-card ws">
+        <div class="icon-circle">
+          <svg width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+          </svg>
+        </div>
+        <h3>WhatsApp</h3>
+        <p>Chatea con nosotros</p>
+        <span class="val">+34 631 90 24 74</span>
+      </a>
+      <a href="mailto:general@katax.es" class="contact-card mail">
+        <div class="icon-circle">
+          <svg width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+          </svg>
+        </div>
+        <h3>Email</h3>
+        <p>Envíanos tu idea</p>
+        <span class="val">general@katax.es</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-left">
+    <p style="font-size: 0.85rem; opacity: 0.7;">2026 kataX Studio.<br>All rights reserved ©</p>
+    <div class="footer-links">
+      <a href="PdP _ katax Studio.pdf" download>Política de Privacidad</a>
+      <span>•</span>
+      <a href="TyC _ kataX Studio.pdf" download>Términos y Condiciones</a>
+    </div>
+  </div>
+  
+  <a href="#hero" class="footer-logo">
+    <img src="LogokataX.png" alt="Logo">
+    <span>kataX</span>
+  </a>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const menu = document.querySelector('#mobile-menu');
+  const menuLinks = document.querySelector('.nav-list');
+  const logoContainer = document.querySelector('.logo');
+  const workItems = document.querySelectorAll('.work-item');
+  let logoTimeout;
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  const projectObserverOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const projectObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible-item');
+        }, index * 80);
+      }
+    });
+  }, projectObserverOptions);
+
+  document.querySelectorAll('section').forEach(section => {
+    if (section.id !== 'hero') {
+      observer.observe(section);
+    }
+  });
+
+  workItems.forEach(item => {
+    projectObserver.observe(item);
+  });
+
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navList = document.querySelector('.nav-list');
+
+  if (mobileMenu && navList) {
+    mobileMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileMenu.classList.toggle('active');
+      navList.classList.toggle('active');
+      document.body.style.overflow = navList.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    document.querySelectorAll('.nav-list a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        navList.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+    
+    document.addEventListener('click', (e) => {
+      if (!navList.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove('active');
+        navList.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href.startsWith('#')) {
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.classList.add('visible');
+          const offsetTop = targetElement.offsetTop - 80;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+
+  workItems.forEach(item => {
+    item.addEventListener('mousemove', (e) => {
+      const rect = item.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      item.style.setProperty('--mouse-x', `${x}px`);
+      item.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+
+  logoContainer?.addEventListener('click', () => {
+    logoContainer.classList.add('logo-flash');
+    clearTimeout(logoTimeout);
+    logoTimeout = setTimeout(() => {
+      logoContainer.classList.remove('logo-flash');
+    }, 400);
+  });
+});
+</script>
+</body>
+</html>
+
